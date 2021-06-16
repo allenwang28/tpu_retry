@@ -19,3 +19,5 @@ Within your VM you can run this script:
 You are free to modify the polling frequency, the re-creation logic, etc.
 
 Note that this runs indefinitely, so you will need to `pkill` the script once you are done.
+
+*NOTE*: Please modify the script to reflect the correct TPU deletion/creation command, as this will differ if you're using e.g. TPU VM or a reserved TPU.
