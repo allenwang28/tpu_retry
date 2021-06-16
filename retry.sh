@@ -10,7 +10,7 @@ POLLING_FREQUENCY=30
 
 while True
 do
-  export TERMINATED=$(gcloud compute tpus describe --zone=$ZONE $TPU_NAME | grep "health: TERMINATED")
+  export TERMINATED=$(gcloud compute tpus describe --zone=$ZONE $TPU_NAME | grep "state: TERMINATED")
   export UNHEALTHY=$(gcloud compute tpus describe --zone=$ZONE $TPU_NAME | grep "health: UNHEALTHY_MAINTENANCE")
   if !( [ -z "$TERMINATED" ] | [ -z "$UNHEALTHY" ] ); then
     echo "TPU is in an unhealthy state, restarting the node."
