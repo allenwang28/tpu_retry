@@ -2,7 +2,19 @@
 
 Note: This is not an officially supported Google product.
 
-This is a simple script used to monitor a TPU and re-create it in case the TPU undergoes a maintenance event.
+## About
+This is a toy example used for illustration purposes in case a TPU pod fails to recover from a maintenance event for whatever reason.
+
+
+This example only attempts to delete and re-create a TPU in case it detects that the TPU is in an "unhealthy state".
+
+
+Please continue reading for expectations:
+- Cloud TPUs are expected to hit maintenance events, but the intended behavior is that the TPU recovers.
+- Generally, saving checkpoints more often (at least every hour) allows you to gracefully recover. Also ensure that your training script does in fact resume from checkpoint.
+- In unexpected circumstances, it's possible that the TPU does not recover from maintenance event. This script showcases an example of how to detect it and delete and re-create the TPU.
+- It's possible that your training script crashes as well. You should modify this script to re-try running the train script.
+- If you are using TPUEstimator, it will automatically try to resume from the latest checkpoint if you specify the same `--model_dir`.
 
 
 ## Example usage
